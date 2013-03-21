@@ -448,7 +448,15 @@
         }
       };
       socket.onmessage = function(e) {
-        self.dispatchMessage(e.data);
+        var msgObj = JSON.parse(e.data);
+        
+        if (msgObj.socketOverride) {
+          console.log(msgObj.message);
+        }
+        
+        else {
+          self.dispatchMessage(e.data);
+        }
       };
       socket.onclose = function() {
         $(document.body).addClass('disconnected');
@@ -577,8 +585,8 @@
       return value;
     };
 
-    this.dispatchMessage = function(msg) {
-      var msgObj = JSON.parse(msg);
+    this.dispatchMessage = function(msgObj) {
+      //var msgObj = JSON.parse(msg);
       if (msgObj.custom !== undefined && exports.oncustommessage) {
         exports.oncustommessage(msgObj.custom);
       }
