@@ -41,11 +41,13 @@ ShinySession <- setRefClass(
       # TODO: Put file upload context in user/app-specific dir if possible
       .fileUploadContext <<- FileUploadContext$new()
 
-      .input      <<- list(ReactiveValues$new(), WS = websocket)
+      .input      <<- ReactiveValues$new()
       .clientData <<- ReactiveValues$new()
 
       input      <<- .createReactiveValues(.input,      readonly=TRUE)
       clientData <<- .createReactiveValues(.clientData, readonly=TRUE)
+      
+      input$WS <<- websocket
       
       token <<- createUniqueId(16)
       .outputs <<- list()
