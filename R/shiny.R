@@ -44,7 +44,7 @@ ShinySession <- setRefClass(
       .input      <<- ReactiveValues$new()
       .clientData <<- ReactiveValues$new()
 
-      input      <<- .createReactiveValues(.input,      readonly=TRUE)
+      input      <<- .createReactiveValues(.input,      readonly=FALSE)
       clientData <<- .createReactiveValues(.clientData, readonly=TRUE)
       
       input$WS <<- websocket
