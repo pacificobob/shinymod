@@ -449,6 +449,7 @@
       };
       socket.onmessage = function(e) {
         var msgObj = JSON.parse(e.data);
+        console.log(e.data);
         
         if (msgObj.socketOverride) {
           console.log(msgObj.message);
