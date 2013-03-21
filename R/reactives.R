@@ -173,8 +173,8 @@ setOldClass("reactivevalues")
 #
 # @param values A ReactiveValues object
 # @param readonly Should this object be read-only?
-.createReactiveValues <- function(values = NULL, readonly = FALSE) {
-  structure(list(impl=values), class='reactivevalues', readonly=readonly)
+.createReactiveValues <- function(values = NULL, websocket = NULL, readonly = FALSE) {
+  structure(list(impl=values, WS = websocket), class='reactivevalues', readonly=readonly)
 }
 
 #' @S3method $ reactivevalues
